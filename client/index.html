@@ -5,7 +5,30 @@
 	<title>Hello World!</title>
 </head>
 <body>
-  <div><p>Hello, World!</p></div>
-  <script></script>
+  <div id='killings'>
+    <p>Hello, World!</p>
+  </div>
+  
+  <script>
+		console.log('About to GET');
+	  $.get("https://thecountedapi.com/api/counted/?state=CA", function(){
+	  })
+	  .done(function(data) {
+	    console.error(data); 
+      console.log('length of killings data array: ', data.length);
+      formatKillings(data);
+	  })
+	  .fail(function(err) {
+	  	console.error(err);
+	  });
+
+	  var formatKillings = function(data) {
+	  	data.forEach(function(killing, index) {
+	  		// $('#killings').append()
+	  		console.log(killing.name);
+	  	});
+	  	
+	  };
+  </script>
 </body>
 </html>
