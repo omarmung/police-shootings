@@ -19,6 +19,8 @@
   "homepage": "https://github.com/omarmung/police-shootings#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "nodemon": "^1.10.2"
+    "jquery": "^3.1.0",
+    "nodemon": "^1.10.2",
+    "underbar": "^0.1.0"
   }
 }
