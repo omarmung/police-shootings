@@ -1,0 +1,24 @@
+{
+  "name": "police-shootings",
+  "version": "1.0.0",
+  "description": "2-day mvp project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omarmung/police-shootings.git"
+  },
+  "author": "Dustin Kimmel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omarmung/police-shootings/issues"
+  },
+  "homepage": "https://github.com/omarmung/police-shootings#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "nodemon": "^1.10.2"
+  }
+}
