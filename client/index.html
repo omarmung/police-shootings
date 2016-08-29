@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html>
   <script src="/scripts/jquery.js"></script>
+  <script src="/scripts/angular.js"></script>
+  <script src="js/main.js"></script>
 <head>
-	<title>Hello World!</title>
+	<title></title>
 </head>
-<body>
-  <div id='killings'>
-    <p>Hello, World!</p>
-  </div>
-  
-  <script>
-		console.log('About to GET');
-	  $.get("https://thecountedapi.com/api/counted/?state=CA", function(){
-	  })
-	  .done(function(data) {
-	    console.error(data); 
-      console.log('length of killings data array: ', data.length);
-      formatKillings(data);
-	  })
-	  .fail(function(err) {
-	  	console.error(err);
-	  });
+<body ng-app='myApp'>
+	<div ng-controller="myController">
+	  
+	  <div class="state-input">
+      <input type="text"
+             ng-model="state"
+             placeholder="Enter State" />
 
-	  var formatKillings = function(data) {
-	  	data.forEach(function(killing, index) {
-	  		// $('#killings').append()
-	  		console.log(killing.name);
-	  	});
-	  	
-	  };
-  </script>
+      <div ng-repeat='killing in myModel'>
+        {{ killing.name }} - 
+        {{ killing.cause }} - 
+        {{ killing.address }} 
+        {{  killing.city }}, 
+        {{ killing.state }}
+      </div>
+	  </div>
+	</div>
 </body>
 </html>
