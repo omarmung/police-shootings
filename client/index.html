@@ -15,10 +15,8 @@
              placeholder="Enter State" /> -->
 
       <div ng-repeat='killing in killings'>
-        {{ killing.address }}
-        {{ killing.city }}, 
-        {{ killing.state }}
-        <a ng-href='#here' ng-click='test(killing);'>Follow</a>
+        {{ killing.name }}, {{ killing.age }}
+        <a ng-href='#here' ng-click='test(killing);'>RIP</a>
       </div>
 	  </div>
 	</div>
