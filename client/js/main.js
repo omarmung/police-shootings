@@ -1,61 +1,42 @@
 var app = angular.module('myApp', [])
 .controller('myController', // [$scope, $http], 
-	function($scope, $http) {
-  $scope.myModel = null;
+	function($scope, $http, serverRequests) {
+	  $scope.killings = null;
 
-  $http.get("https://thecountedapi.com/api/counted/?state=IL")
-      .then(function(response) {
-          $scope.myModel = response.data;
-      });
+	  $scope.test = function(killing) {
+	    serverRequests.testService(killing);	
+		  // serverRequests.postKilling(killing);
+	  };
+	  
+	  // get police killings by state
+	  $http.get("https://thecountedapi.com/api/counted/?state=IL")
+		  .then(function(response) {
+		      $scope.killings = response.data;
+		  });
 
 });
 
+app.factory('serverRequests', function($http) {
+  var service = {};
+  
+  service.postKilling = function(killing) {
+  	var killingData = killing;
 
+		$http.post('/killing', killingData)
+		.then(
+			function(data) {
+				console.log('post returned!!');
+     	  console.log(data);
+      }, 
+      function(error) {
+        console.error(error);
+		  }
+		);
+  };
 
-	// $http.get(
-	// 	'https://thecountedapi.com/api/counted/?state=CA', 
-	// 	config
-	// 	)
-	// .then(
-	// 	successCallback, 
-	// 	errorCallback
-	// );
+  service.testService = function(killing) {
+  	console.log('service works!!' + killing.city);
+  };
 
-// $http.get(
-// 	'https://thecountedapi.com/api/counted/?state=CA', 
-//   config
-// )
-// .then(function(response) {
-//   console.log(response);
-//   $scope.myModel = response;
-// }, 
-// function(response) {
-//   console.log(response);
-// });
-
-// .directive('myFirstDirective', function() {
-// 	return {
-
-// 	};
-// });
-
-
-	 // console.log('About to GET');
-	 //  $.get("https://thecountedapi.com/api/counted/?state=CA", function(){
-	 //  })
-	 //  .done(function(data) {
-	 //    console.error(data); 
-   //     console.log('length of killings data array: ', data.length);
-   //     formatKillings(data);
-	 //  })
-	 //  .fail(function(err) {
-	 //  	console.error(err);
-	 //  });
-
-	 //  // var formatKillings = function(data) {
-	 //  // 	data.forEach(function(killing, index) {
-	 //  // 		// $('#killings').prepend('<p></p>').text(killing.name);
-	 //  // 		// console.log(killing.name);
-	 //  // 	});
-	  	
-	 //  };
+  return service;
+});

@@ -9,19 +9,20 @@
 <body ng-app='myApp'>
 	<div ng-controller="myController">
 	  
-	  <div class="state-input">
+<!-- 	  <div class="state-input">
       <input type="text"
              ng-model="state"
-             placeholder="Enter State" />
+             placeholder="Enter State" /> -->
 
-      <div ng-repeat='killing in myModel'>
-        {{ killing.name }} - 
-        {{ killing.cause }} - 
-        {{ killing.address }} 
-        {{  killing.city }}, 
+      <div ng-repeat='killing in killings'>
+        {{ killing.address }}
+        {{ killing.city }}, 
         {{ killing.state }}
+        <a ng-href='#here' ng-click='test(killing);'>Follow</a>
       </div>
 	  </div>
 	</div>
+  <div id='map'></div>
+	
 </body>
 </html>
