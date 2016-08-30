@@ -4,8 +4,8 @@ var app = angular.module('myApp', [])
 	  $scope.killings = null;
 
 	  $scope.test = function(killing) {
-	    serverRequests.testService(killing);	
-		  // serverRequests.postKilling(killing);
+	    // serverRequests.testService(killing);	
+		  serverRequests.postKilling(killing);
 	  };
 	  
 	  // get police killings by state

@@ -5,7 +5,6 @@ var express = require('express');
 
 var app = express();
 
-
 app.use(bodyParser.json());
 app.use(express.static('client'));
 app.use('/scripts', express.static(__dirname + '/node_modules/jquery/dist/'));
